@@ -11,3 +11,14 @@ set(COMPONENT_ADD_INCLUDEDIRS ".")
 
 to jest potrzebne zeby standardowo includowal h z podkatalogow z komponentami
 
+
+2. konfiguracja menuconfig
+plik Kconfig.projbuild
+w katalogu main
+
+nastepnie w pliku h
+#define GPIO_DS18B20_0       (CONFIG_ONE_WIRE_GPIO)
+gdzie CONFIG_ONE_WIRE_GPIO zdefiniowalismy w Kconfig.projbuild
+czyli dorzuca nam definicje preprocesora
+
+
