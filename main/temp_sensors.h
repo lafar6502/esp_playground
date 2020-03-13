@@ -3,7 +3,8 @@
 
 #define GPIO_DS18B20_0       (CONFIG_ONE_WIRE_GPIO)
 
-void tempSensorsTest();
+void tempSensorsInit();
+void tempSensorsRead();
 
 #endif
 
