@@ -4,8 +4,10 @@
 #include "temp_sensors.h"
 
 #define MAX_DEVICES 8
+#define DS18B20_RESOLUTION 12
 
 OneWireBus_ROMCode g_device_rom_codes[MAX_DEVICES] = {0};
+DS18B20_Info * g_devices[MAX_DEVICES] = {0};
 
 void tempSensorsTest() {
     printf("nasze gpio %d\r\n", GPIO_DS18B20_0);
@@ -33,5 +35,24 @@ void tempSensorsTest() {
         owb_search_next(owb, &search_state, &found);
     }
     printf("Found %d device%s\n", num_devices, num_devices == 1 ? "" : "s");
+
+
+    for (int i = 0; i < num_devices; ++i)
+    {
+        DS18B20_Info * ds18b20_info = ds18b20_malloc();  // heap allocation
+        g_devices[i] = ds18b20_info;
+
+        if (num_devices == 1)
+        {
+            printf("Single device optimisations enabled\n");
+            ds18b20_init_solo(ds18b20_info, owb);          // only one device on bus
+        }
+        else
+        {
+            ds18b20_init(ds18b20_info, owb, g_device_rom_codes[i]); // associate with bus and device
+        }
+        ds18b20_use_crc(ds18b20_info, true);           // enable CRC check for temperature readings
+        ds18b20_set_resolution(ds18b20_info, DS18B20_RESOLUTION);
+    }
 };
 
