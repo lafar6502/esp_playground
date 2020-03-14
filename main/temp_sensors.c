@@ -4,7 +4,7 @@
 #include "temp_sensors.h"
 
 #define MAX_DEVICES 8
-#define DS18B20_RESOLUTION (DS18B20_RESOLUTION_12_BIT)
+#define DS18B20_RESOLUTION (DS18B20_RESOLUTION_10_BIT)
 
 OneWireBus_ROMCode g_device_rom_codes[MAX_DEVICES] = {0};
 DS18B20_Info * g_devices[MAX_DEVICES] = {0};
@@ -13,7 +13,7 @@ int num_devices = 0;
 owb_rmt_driver_info rmt_driver_info;
     
 void tempSensorsInit() {
-    printf("nasze gpio %d\r\n", GPIO_DS18B20_0);
+    printf(" gpio %d\r\n", GPIO_DS18B20_0);
 
 
     

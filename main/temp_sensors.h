@@ -5,6 +5,7 @@
 
 void tempSensorsInit();
 void tempSensorsRead();
+void setupTempSensors2();
 
 #endif
 

@@ -17,13 +17,15 @@
 #include "ds18b20.h"
 #include "temp_sensors.h"
 #include "test_task.h"
-
+#include "esp_log.h"
 
 void app_main(void)
 {
+    esp_log_level_set("*", ESP_LOG_DEBUG);
     printf("Hello world!\n");
     vTaskDelay(2000.0 / portTICK_PERIOD_MS);
-    tempSensorsInit();
+    //tempSensorsInit();
+    setupTempSensors2();
     initTestTask();
     /* Print chip information */
     esp_chip_info_t chip_info;
@@ -41,7 +43,7 @@ void app_main(void)
 
     for (int i=0; i<100; i++) {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
-        tempSensorsRead();
+        //tempSensorsRead();
     }
 
     
