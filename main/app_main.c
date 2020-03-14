@@ -16,6 +16,7 @@
 #include "owb_rmt.h"
 #include "ds18b20.h"
 #include "temp_sensors.h"
+#include "test_task.h"
 
 
 void app_main(void)
@@ -23,6 +24,7 @@ void app_main(void)
     printf("Hello world!\n");
     vTaskDelay(2000.0 / portTICK_PERIOD_MS);
     tempSensorsInit();
+    initTestTask();
     /* Print chip information */
     esp_chip_info_t chip_info;
     esp_chip_info(&chip_info);

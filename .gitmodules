@@ -4,3 +4,6 @@
 [submodule "components/esp32-ds18b20"]
 	path = components/esp32-ds18b20
 	url = https://github.com/DavidAntliff/esp32-ds18b20.git
+[submodule "components/nrf24l01p-esp32"]
+	path = components/nrf24l01p-esp32
+	url = https://github.com/lafar6502/nRF24L01p-ESP32-Library.git
