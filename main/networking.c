@@ -25,8 +25,8 @@
    If you'd rather not, just change the below entries to strings with
    the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
 */
-static const char* p_net_ssid  = "unitech1";
-static const char* p_net_pass = "haslo123456";
+#define EXAMPLE_ESP_WIFI_SSID      CONFIG_ESP_WIFI_SSID
+#define EXAMPLE_ESP_WIFI_PASS      CONFIG_ESP_WIFI_PASSWORD
 #define EXAMPLE_ESP_MAXIMUM_RETRY  5
 
 /* FreeRTOS event group to signal when we are connected*/
@@ -94,8 +94,8 @@ void wifi_init_sta()
             
         },
     };
-    strcpy((char*) wifi_config.sta.ssid, p_net_ssid);
-    strcpy((char*) wifi_config.sta.password, p_net_pass);
+    strcpy((char*) wifi_config.sta.ssid, EXAMPLE_ESP_WIFI_SSID);
+    strcpy((char*) wifi_config.sta.password, EXAMPLE_ESP_WIFI_PASS);
     
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
     ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
@@ -115,10 +115,10 @@ void wifi_init_sta()
      * happened. */
     if (bits & WIFI_CONNECTED_BIT) {
         ESP_LOGI(TAG, "connected to ap SSID:%s password:%s",
-                 p_net_ssid, p_net_pass);
+                 EXAMPLE_ESP_WIFI_SSID, EXAMPLE_ESP_WIFI_PASS);
     } else if (bits & WIFI_FAIL_BIT) {
         ESP_LOGI(TAG, "Failed to connect to SSID:%s, password:%s",
-                 p_net_ssid, p_net_pass);
+                 EXAMPLE_ESP_WIFI_SSID, EXAMPLE_ESP_WIFI_PASS);
     } else {
         ESP_LOGE(TAG, "UNEXPECTED EVENT");
     }
@@ -130,6 +130,7 @@ void wifi_init_sta()
 
 void initNetwork()
 {
+    //eturn;
     //Initialize NVS
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {

@@ -13,3 +13,6 @@
 [submodule "components/tarablessd1306"]
 	path = components/tarablessd1306
 	url = https://github.com/TaraHoleInIt/tarablessd1306.git
+[submodule "components/esp32-pcd8544"]
+	path = components/esp32-pcd8544
+	url = https://github.com/yanbe/esp32-pcd8544.git
