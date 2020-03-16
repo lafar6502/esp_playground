@@ -2,6 +2,8 @@
 #include "owb_rmt.h"
 #include "ds18b20.h"
 #include "temp_sensors.h"
+#include "display.h"
+#include "networking.h"
 
 #define MAX_DEVICES 8
 #define DS18B20_RESOLUTION (DS18B20_RESOLUTION_10_BIT)
@@ -75,7 +77,10 @@ void tempSensorsRead()
         errors[i] = ds18b20_read_temp(g_devices[i], &readings[i]);
     }
 
-
+    char buf[30];
+    char buf2[30];
+    sprintf(buf, "%2.1f %2.1f ", readings[0], readings[1]);
+    sprintf(buf2, "ip %s, d: %d", getCurrentIP(), num_devices);
     for (int i = 0; i < num_devices; ++i)
     {
         if (errors[i] != DS18B20_OK)
@@ -87,6 +92,8 @@ void tempSensorsRead()
 		printf("dev %d TEMP %.1f\r\n", i, readings[i]);
         }
     }    
+    
+    showText(buf2, buf, NULL, NULL);
     
 }
 

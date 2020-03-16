@@ -7,3 +7,9 @@
 [submodule "components/nrf24l01p-esp32"]
 	path = components/nrf24l01p-esp32
 	url = https://github.com/lafar6502/nRF24L01p-ESP32-Library.git
+[submodule "components/esp32-rf-receiver"]
+	path = components/esp32-rf-receiver
+	url = https://github.com/lafar6502/esp32-rf-receiver.git
+[submodule "components/tarablessd1306"]
+	path = components/tarablessd1306
+	url = https://github.com/TaraHoleInIt/tarablessd1306.git
